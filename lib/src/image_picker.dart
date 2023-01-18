@@ -198,9 +198,11 @@ class _PickerScreenState extends State<PickerScreen> {
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 10.0,
                   ),
-                  children: widget.data
-                      .map((e) => photoTile(size, e["media_url"]))
-                      .toList(),
+                  children: [
+                    for (int i = 0; i < widget.data.length; i++)
+                      if (widget.data[i] != null)
+                        photoTile(size, widget.data[i]['media_url'])
+                  ],
                 ),
               ),
             )
